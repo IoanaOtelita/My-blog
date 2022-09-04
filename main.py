@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, abort
 import datetime as dt
 from functools import wraps
 import random
+import os
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
@@ -16,7 +17,7 @@ from flask_ckeditor import CKEditorField, CKEditor
 
 # Create the app
 app = Flask(__name__)
-app.secret_key = "tigrutz"
+app.secret_key = os.environ.get('SECRET_KEY')
 Bootstrap(app)
 
 # Create the Login Manager
@@ -33,7 +34,7 @@ date = dt.datetime.today()
 YEAR = date.year
 
 # Set up the database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
