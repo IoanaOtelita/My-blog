@@ -8,7 +8,7 @@ from sqlalchemy.orm import relationship
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from flask_gravatar import Gravatar
-from flask_login import LoginManager, login_user, login_required, logout_user, UserMixin, current_user
+from flask_login import LoginManager, login_user, logout_user, UserMixin, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from wtforms import StringField, SubmitField, EmailField, PasswordField
 from wtforms.validators import DataRequired, Email
@@ -38,7 +38,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # GRAVATAR endpoint
-GRAVATAR = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
+GRAVATAR = Gravatar(app, size=100, rating='g', default='retro', force_default=False,
+                    force_lower=False, use_ssl=False, base_url=None)
 GRAVATAR_IMG = ['mg', 'identicon', 'monsterid', 'wavatar', 'retro', 'robohash']
 
 
@@ -53,23 +54,6 @@ def admin_only(f):
             # Else continue with the route function
             return f(*args, **kwargs)
         return abort(403)
-
-    return decorated_function
-
-
-# Create a function who verifies if the user is logged in
-def login_only(f):
-    wraps(f)
-
-    def decorated_function(*args, **kwargs):
-        # If the user is logged in then continue with the initial path
-        if current_user.is_authenticated:
-            return f(*args, **kwargs)
-        # if the user isn't logged in then redirect him to the login page
-        # Warn the user that he needs to have an account to post a comment
-        else:
-            error = "You need to have an account in order to post a comment. "
-            return redirect(url_for('login', er=error))
 
     return decorated_function
 
@@ -199,7 +183,7 @@ def post(post_id):
     post_to_display = BlogPost.query.get(post_id)
     comment_form = CommentForm()
 
-    # Verify if the user is logged in if we wants to post a comment
+    # Verify if the user is logged in if he wants to post a comment
     if request.method == "POST":
         if current_user.is_authenticated:
             new_comment = Comment(text=comment_form.comment.data,
@@ -268,7 +252,6 @@ def edit(post_id):
         edit_edit = BlogPost.query.get(post_id)
         edit_edit.title = form.title.data
         edit_edit.subtitle = form.subtitle.data
-        edit_edit.author = form.author.data
         edit_edit.img_url = form.img_url.data
         edit_edit.body = form.body.data
 
