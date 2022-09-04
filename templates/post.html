@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} Post {% endblock %}
+{% block styling %}
+    {{ super() }}
+    .jumbotron {
+          background-image: url({{p.img_url}});
+}
+{% endblock %}
+
+
+{% block header %}
+<div class="jumbotron">
+    <h1 class="title">{{ p.title }}</h1>
+    <p class="subtitle">{{ p.subtitle }}</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center content-post">
+        <div class="col-lg-10 col-md-8 col-sm-7">
+            {{ p.body|safe() }}
+            <hr>
+            <form method="post">
+                {{ f.comment.label }}
+                {{ f.comment(class='input') }}
+                {{ f.submit(class='button') }}
+                {{ ckeditor.load() }}
+                {{ ckeditor.config('comment', height=200) }}
+            </form>
+
+            <div class="comments-container">
+                {% for comment in p.comments: %}
+                <div class="comment">
+<!--                    <img class="profile-img" src="{{ comment.comment_author.email | gravatar }}">-->
+
+                    <img class="profile-img" src="http://en.gravatar.com/avatar/IMG?d={{ comment.comment_author.img }}&s=35">
+                    <p class="comment-author"><strogn><em>{{ comment.comment_author.name }}</em></strogn></p>
+                    </ul>
+                    <div class="comment-body">
+                        {{ comment.text|safe() }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+    {% if current_user.id == 1: %}
+        <a href="{{ url_for('edit', post_id=p.id) }}"><button class="button">Edit</button></a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+
+{% block styling %}
+    {{ super() }}
+    .jumbotron {
+        background-image: url({{ url_for('static', filename='images/create_post.jpg') }})
+    }
+{% endblock %}
+
+{% block header %}
+<div class="jumbotron">
+    <h1 class="title">{% block heading %}{% endblock %}</h1>
+    <p class="subtitle">You're going to create an awesome blog post!</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-8 col-sm-7">
+            <form method="post">
+                {{ f.title.label }}
+                {{ f.title(class='input') }}
+                {{ f.subtitle.label }}
+                {{ f.subtitle(class='input') }}
+                {{ f.img_url.label }}
+                {{ f.img_url(class='input') }}
+                {{ f.body.label }}
+                {{ f.body(class='input') }}
+                {{ f.submit(class='button') }}
+                {{ ckeditor.load() }}
+                {{ ckeditor.config("body", height=200) }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

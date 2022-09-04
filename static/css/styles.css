@@ -1,0 +1,236 @@
+html {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+ background-color: #fff;
+ margin: 0;
+ padding: 0;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+h1, h2 {
+   font-family: "Montserrat", sans-serif;
+}
+
+p, h3 {
+    font-family: "Ubuntu", sans-serif;
+    margin: 0 auto;
+}
+
+/** BUTTON **/
+button, .button {
+    position: relative;
+    width: 150px;
+    height: 50px;
+    border: 0;
+    margin-top: 10px;
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    background-color: #FE7E6D;
+    float: right;
+}
+
+button:hover, .button:hover {
+    box-shadow: 4px 5px #9CB4CC;
+    transform: translateY(-5px);
+}
+
+/** NAVBAR **/
+.navbar {
+    padding: 0 3%;
+    margin: 0 4%;
+}
+
+.nav-link, .navbar-brand {
+    font-family: "Montserrat", sans-serif;
+    line-height: 3rem;
+    color: #FF7171;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-brand:hover {
+    color: #FF7171;
+}
+
+.nav-link {
+    font-size: 1rem;
+}
+
+.nav-link:hover {
+    color: #9CB4CC;
+}
+
+.nav-link:focus {
+    color: #9CB4CC;
+}
+
+.navbar::after {
+	content: '';
+	width: 110%;
+	height: 100%;
+	background-color: white;
+	opacity: 0.5;
+	position: absolute;
+	top: 0;
+	left: -5%;
+	z-index: -1;
+}
+
+/** HEADER (jumbotron) **/
+.jumbotron {
+    color: #fff;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+}
+
+.title {
+   font-family: "Montserrat", sans-serif;
+   font-size: 5rem;
+   line-height: 6rem;
+   padding: 10rem 0 0;
+}
+
+.subtitle {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1.5rem;
+}
+
+
+/** FOOTER **/
+.footer {
+   text-align: center;
+   padding: 50px 25%;
+   height: 270px;
+   background-color: #FE7E6D;
+   margin-top: 100px;
+}
+
+.row {
+    text-align: center;
+}
+
+.row-top {
+   padding: 20px 0 10px;
+}
+
+.footer-link {
+    color: #fff;
+}
+
+.footer-link:hover {
+    color: #9CB4CC;
+}
+
+.fa-brands {
+    margin: 0 10px;
+}
+
+.copyright {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1rem;
+    padding: 1rem 0;
+    color: #CCD1E4;
+}
+
+/** LIST OF POSTS **/
+.container {
+    padding: 20px 40px;
+    margin: 20px auto;
+}
+
+.content-post {
+    text-align: left;
+}
+
+.data-post {
+    color: #CCD1E4;
+    display: inline;
+}
+
+.delete {
+    color: #000;
+    font-weight: bold;
+}
+
+.delete:hover {
+    color: #FF7171;
+    font-size: 1.5rem;
+}
+
+.post-link:hover .title-post {
+    color: #CCD1E4;
+}
+
+.post-link:hover .subtitle-post {
+    color: #CCD1E4;
+}
+
+.post-link:focus .title-post {
+    color: #CCD1E4;
+}
+
+.post-link:focus .subtitle-post {
+    color: #CCD1E4;
+}
+
+.title-post, .subtitle-post {
+    color: #000000;
+}
+
+/** FORM **/
+form {
+    text-align: left;
+    font-family: "Montserrat", sans-serif;
+    weight: bolder;
+}
+
+.input{
+    display: block;
+    margin: 10px auto;
+    width: 100%;
+}
+
+.error {
+    color: red;
+    font-family: "Ubuntu", sans-serif;
+}
+
+/** COMMENTS **/
+.comments-container {
+    margin: 20px auto;
+    padding: 7% 0;
+}
+
+.comment {
+    margin: 30px auto;
+}
+
+.comment-author {
+    font-family: "Ubuntu", sans-serif;
+    display: inline-block;
+    font-size: 1rem;
+    color: #FF7171;
+    opacity: 50%;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.profile-img {
+    display: inline-block;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+.comment-body {
+    margin: auto 5%;
+}

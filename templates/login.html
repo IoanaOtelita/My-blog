@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} Log In {% endblock %}
+{% block styling %}
+    {{ super() }}
+    .jumbotron {
+        background-image: url('https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    }
+{% endblock %}
+
+{% block header %}
+<div class="jumbotron">
+    <h1 class="title">Log In</h1>
+    <p class="subtitle">Welcome back! Did you read something interesting lately?</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-8 col-sm-7">
+            <form method="post" action="{{ url_for('login') }}">
+                {% if request.args.get('er'): %}
+                    <p class="error">{{ request.args.get('er') }}</p>
+                {% endif %}
+                {{ f.email.label }}
+                {{ f.email(class='input') }}
+                {{ f.password.label }}
+                {{ f.password(class='input') }}
+                {{ f.submit_log(class='button') }}
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

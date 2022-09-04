@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} Register {% endblock %}
+{% block styling %}
+    {{ super() }}
+    .jumbotron {
+        background-image: url('https://images.pexels.com/photos/368260/pexels-photo-368260.jpeg?cs=srgb&dl=pexels-kinkate-368260.jpg&fm=jpg');
+    }
+{% endblock %}
+
+{% block header %}
+<div class="jumbotron">
+    <h1 class="title">Register</h1>
+    <p class="subtitle">Start contributing to the blog!</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-8 col-sm-7">
+            <form method="post" action="{{ url_for('register') }}">
+                {{ f.name.label }}
+                {{ f.name(class='input') }}
+                {{ f.email.label }}
+                {% if request.args.get('er'): %}
+                    <p class="error">{{ request.args.get('er') }}</p>
+                {% endif %}
+                {{ f.email(class='input') }}
+                {{ f.password.label }}
+                {{ f.password(class='input') }}
+                {{ f.submit_register(class="button") }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
